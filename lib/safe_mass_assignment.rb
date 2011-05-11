@@ -34,8 +34,8 @@ module SafeMassAssignment
 
   module ClassMethods
     def self.extended(base)
-      base.metaclass.alias_method_chain :create, :safe_mass_assignment
-      base.metaclass.alias_method_chain :create!, :safe_mass_assignment
+      base.singleton_class.alias_method_chain :create, :safe_mass_assignment
+      base.singleton_class.alias_method_chain :create!, :safe_mass_assignment
     end
 
     def create_with_safe_mass_assignment(attributes={}, protected_attributes={})
